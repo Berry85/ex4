@@ -29,8 +29,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login")
 				.permitAll()
 				.and()
+				.rememberMe()
+				.rememberMeCookieName("remember")
+				.tokenValiditySeconds(60*60)
+				.and()
 				.logout()
-				.permitAll();
+				.permitAll()
+				.and().csrf().disable();
 	}
 
 	@Autowired
